@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Circle</title>
+	<script type="text/javascript" src="paper-full.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/howler/1.1.28/howler.js"></script>
+	<link rel="stylesheet" type="text/css" href="circle.css">
+	<script type="text/paperscript" canvas="myCanvas">
+       var keyData = {
+       a:{
+       color:"purple",
+       sound: new Howl({
+       urls: ['sound/Scissor_Barber.mp3' ]
+       })
+     },
+    
+
+    b:{
+       color:"green",
+       sound: new Howl({
+       urls: ['sound/Timer2.mp3' ]
+       })
+     },
+
+     c:{
+       color:"yellow",
+       sound: new Howl({
+       urls: ['sound/Toaster2.mp3' ]
+       })
+     },
+      d:{
+       color:"red",
+       sound: new Howl({
+       urls: ['sound/Scissor_Barber.mp3' ]
+       })
+     },
+    
+
+    e:{
+       color:"blue",
+       sound: new Howl({
+       urls: ['sound/Timer2.mp3']
+       })
+     },
+
+     f:{
+       color:"orange",
+       sound: new Howl({
+       urls: ['sound/Toaster2.mp3' ]
+       })
+     },
+     g:{
+       color:"red",
+       sound: new Howl({
+       urls: ['sound/Scissor_Barber.mp3']
+       })
+     },
+    
+
+    h:{
+       color:"green",
+       sound: new Howl({
+       urls: ['sound/Timer2.mp3' ]
+       })
+     },
+
+     i:{
+       color:"purple",
+       sound: new Howl({
+       urls: ['sound/Toaster2.mp3' ]
+       })
+   },
+   j:{
+       color:"orange",
+       sound: new Howl({
+       urls: ['sound/Toaster2.mp3' ]
+       })
+     },
+     k:{
+       color:"red",
+       sound: new Howl({
+       urls: ['sound/Scissor_Barber.mp3']
+       })
+     },
+    
+
+    l:{
+       color:"green",
+       sound: new Howl({
+       urls: ['sound/Timer2.mp3' ]
+       })
+     },
+
+     m:{
+       color:"purple",
+       sound: new Howl({
+       urls: ['sound/Toaster2.mp3' ]
+       })
+     }
+     }
+    
+
+        var circles = [];
+       
+		function onKeyDown(event) {
+		  if(keyData[event.key]){
+		   var maxPoint = new Point(view.size.width, view.size.height);
+		   var randomPoint = Point.random();
+		   var point = maxPoint * randomPoint;
+		   var newCircle = new Path.Circle(point,500);
+		   newCircle.fillColor = keyData[event.key].color; 
+		   keyData[event.key].sound.play();
+	       circles.push(newCircle);
+		}
+		  
+	              
+        }
+       
+		   
+		function onFrame(event){
+		for(var i = 0; i<circles.length; i++){
+		circles[i].fillColor.hue += 1;
+		circles[i].scale(.9);
+	}
+		
+	}
+        
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas" resize></canvas>
+</body>
+</html>
